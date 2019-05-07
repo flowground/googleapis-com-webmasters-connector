@@ -1,0 +1,271 @@
+{
+    "title": "Search Console",
+    "description": "View Google Search Console data for your verified sites.",
+    "docsUrl": "https://developers.google.com/webmaster-tools/",
+    "url": "https://api.apis.guru/v2/specs/googleapis.com/webmasters/v3/swagger.json",
+    "envVars": {
+        "OAUTH_CLIENT_ID": {
+            "description": "OAuth Client ID"
+        },
+        "OAUTH_CLIENT_SECRET": {
+            "description": "OAuth Client Secret"
+        }
+    },
+    "credentials": {
+        "fields": {
+            "server": {
+                "label": "Server",
+                "viewClass": "SelectView",
+                "model": [
+                    "https://www.googleapis.com/webmasters/v3",
+                    "--- Custom URL"
+                ],
+                "required": true
+            },
+            "otherServer": {
+                "label": "Custom Server URL",
+                "viewClass": "TextFieldView"
+            },
+            "Oauth2": {
+                "label": "Oauth 2.0 authentication",
+                "viewClass": "OAuthFieldView"
+            }
+        },
+        "oauth2": {
+            "client_id": "{{OAUTH_CLIENT_ID}}",
+            "client_secret": "{{OAUTH_CLIENT_SECRET}}",
+            "auth_uri": "https://accounts.google.com/o/oauth2/auth"
+        }
+    },
+    "triggers": {
+        "startFlow": {
+            "main": "./lib/triggers/startFlow.js",
+            "type": "polling",
+            "title": "Start Flow",
+            "fields": {}
+        }
+    },
+    "actions": {
+        "webmasters_sites_list": {
+            "main": "./lib/actions/webmasters_sites_list.js",
+            "title": "Lists the user's Search Console sites.",
+            "description": "Lists the user's Search Console sites.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/webmasters_sites_list.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "webmasters_sites_delete": {
+            "main": "./lib/actions/webmasters_sites_delete.js",
+            "title": "Removes a site from the set of the user's Search Console sites.",
+            "description": "Removes a site from the set of the user's Search Console sites.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/webmasters_sites_delete.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "webmasters_sites_get": {
+            "main": "./lib/actions/webmasters_sites_get.js",
+            "title": "Retrieves information about specific site.",
+            "description": "Retrieves information about specific site.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/webmasters_sites_get.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "webmasters_sites_add": {
+            "main": "./lib/actions/webmasters_sites_add.js",
+            "title": "Adds a site to the set of the user's sites in Search Console.",
+            "description": "Adds a site to the set of the user's sites in Search Console.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/webmasters_sites_add.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "webmasters_searchanalytics_query": {
+            "main": "./lib/actions/webmasters_searchanalytics_query.js",
+            "title": "Query your data with filters and parameters that you define. Returns zero or more rows grouped by the row keys that you define. You must define a date range of one or more days.\n\nWhen date is one of the group by values, any days without data are omitted from the result list. If you need to know which days have data, issue a broad date range query grouped by date for any metric, and see which day rows are returned.",
+            "description": "Query your data with filters and parameters that you define. Returns zero or more rows grouped by the row keys that you define. You must define a date range of one or more days.\n\nWhen date is one of the group by values, any days without data are omitted from the result list. If you need to know which days have data, issue a broad date range query grouped by date for any metric, and see which day rows are returned.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/webmasters_searchanalytics_query.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "webmasters_sitemaps_list": {
+            "main": "./lib/actions/webmasters_sitemaps_list.js",
+            "title": "Lists the sitemaps-entries submitted for this site, or included in the sitemap index file (if sitemapIndex is specified in the request).",
+            "description": "Lists the sitemaps-entries submitted for this site, or included in the sitemap index file (if sitemapIndex is specified in the request).",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/webmasters_sitemaps_list.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "webmasters_sitemaps_delete": {
+            "main": "./lib/actions/webmasters_sitemaps_delete.js",
+            "title": "Deletes a sitemap from this site.",
+            "description": "Deletes a sitemap from this site.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/webmasters_sitemaps_delete.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "webmasters_sitemaps_get": {
+            "main": "./lib/actions/webmasters_sitemaps_get.js",
+            "title": "Retrieves information about a specific sitemap.",
+            "description": "Retrieves information about a specific sitemap.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/webmasters_sitemaps_get.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "webmasters_sitemaps_submit": {
+            "main": "./lib/actions/webmasters_sitemaps_submit.js",
+            "title": "Submits a sitemap for a site.",
+            "description": "Submits a sitemap for a site.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/webmasters_sitemaps_submit.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "webmasters_urlcrawlerrorscounts_query": {
+            "main": "./lib/actions/webmasters_urlcrawlerrorscounts_query.js",
+            "title": "Retrieves a time series of the number of URL crawl errors per error category and platform.",
+            "description": "Retrieves a time series of the number of URL crawl errors per error category and platform.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/webmasters_urlcrawlerrorscounts_query.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "webmasters_urlcrawlerrorssamples_list": {
+            "main": "./lib/actions/webmasters_urlcrawlerrorssamples_list.js",
+            "title": "Lists a site's sample URLs for the specified crawl error category and platform.",
+            "description": "Lists a site's sample URLs for the specified crawl error category and platform.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/webmasters_urlcrawlerrorssamples_list.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "webmasters_urlcrawlerrorssamples_markAsFixed": {
+            "main": "./lib/actions/webmasters_urlcrawlerrorssamples_markAsFixed.js",
+            "title": "Marks the provided site's sample URL as fixed, and removes it from the samples list.",
+            "description": "Marks the provided site's sample URL as fixed, and removes it from the samples list.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/webmasters_urlcrawlerrorssamples_markAsFixed.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "webmasters_urlcrawlerrorssamples_get": {
+            "main": "./lib/actions/webmasters_urlcrawlerrorssamples_get.js",
+            "title": "Retrieves details about crawl errors for a site's sample URL.",
+            "description": "Retrieves details about crawl errors for a site's sample URL.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/webmasters_urlcrawlerrorssamples_get.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        }
+    }
+}

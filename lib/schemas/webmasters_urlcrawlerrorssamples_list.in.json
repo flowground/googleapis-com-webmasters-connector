@@ -1,0 +1,46 @@
+{
+    "type": "object",
+    "properties": {
+        "category": {
+            "required": true,
+            "type": "string",
+            "enum": [
+                "authPermissions",
+                "flashContent",
+                "manyToOneRedirect",
+                "notFollowed",
+                "notFound",
+                "other",
+                "roboted",
+                "serverError",
+                "soft404"
+            ]
+        },
+        "platform": {
+            "required": true,
+            "type": "string",
+            "enum": [
+                "mobile",
+                "smartphoneOnly",
+                "web"
+            ]
+        },
+        "siteUrl": {
+            "required": true,
+            "type": "string"
+        },
+        "oauth_token": {
+            "type": "string"
+        },
+        "prettyPrint": {
+            "type": "boolean",
+            "default": true
+        },
+        "quotaUser": {
+            "type": "string"
+        },
+        "userIp": {
+            "type": "string"
+        }
+    }
+}
